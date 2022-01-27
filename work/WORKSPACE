@@ -31,13 +31,13 @@ go_register_toolchains(
 
 local_repository(
     name = "a",
-    path = "../work/a",
+    path = "a",
     repo_mapping = {"@ru_bozaro_go_bazel_c" : "@ru_bozaro_go_bazel_c-v1"}
 )
 
 local_repository(
     name = "b",
-    path = "../work/b",
+    path = "b",
     repo_mapping = {"@ru_bozaro_go_bazel_c" : "@ru_bozaro_go_bazel_c-v2"}
 )
 

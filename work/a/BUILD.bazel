@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "a_lib",
+    srcs = ["main.go"],
+    importpath = "bozaro.ru/go-bazel/a",
+    visibility = ["//visibility:private"],
+    deps = [
+        "@ru_bozaro_go_bazel_c//:c",
+#        "//src/misc/generic/panicsafe",
+#        "//src/tool/joom-generate/tool",
+    ],
+)
+
+go_binary(
+    name = "a",
+    embed = [":a_lib"],
+    visibility = ["//visibility:public"],
+)

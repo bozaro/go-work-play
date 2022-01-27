@@ -1,1 +1,23 @@
 workspace(name = "b")
+
+# Shared block begin
+local_repository(
+    name = "tools",
+    path = "../tools",
+)
+load("@tools//:go.bzl", "go_http_archives", "go_version")
+go_http_archives()
+
+load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
+load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
+
+go_rules_dependencies()
+go_register_toolchains(
+    version = go_version(),
+)
+gazelle_dependencies()
+# Shared block end
+
+load("//:deps.bzl", "local_repositories", "repo_mapping")
+local_repositories("../", repo_mapping())
+

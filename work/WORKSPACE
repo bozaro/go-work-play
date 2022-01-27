@@ -1,4 +1,4 @@
-workspace(name = "a")
+workspace(name = "work")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
@@ -30,8 +30,25 @@ go_register_toolchains(
 )
 
 local_repository(
-    name = "ru_bozaro_go_bazel_c",
-    path = "../../cv1",
+    name = "a",
+    path = "../work/a",
+    repo_mapping = {"@ru_bozaro_go_bazel_c" : "@ru_bozaro_go_bazel_c-v1"}
+)
+
+local_repository(
+    name = "b",
+    path = "../work/b",
+    repo_mapping = {"@ru_bozaro_go_bazel_c" : "@ru_bozaro_go_bazel_c-v2"}
+)
+
+local_repository(
+    name = "ru_bozaro_go_bazel_c-v1",
+    path = "../cv1",
+)
+
+local_repository(
+    name = "ru_bozaro_go_bazel_c-v2",
+    path = "../cv2",
 )
 
 gazelle_dependencies()

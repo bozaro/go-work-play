@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "c",
+    srcs = ["hello.go"],
+    importpath = "bozaro.ru/go-bazel/c",
+    visibility = ["//visibility:public"],
+    deps = [],
+)
+
+alias(
+    name = "go_default_library",
+    actual = ":c",
+    visibility = ["//visibility:public"],
+)
